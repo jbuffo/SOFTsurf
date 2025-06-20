@@ -8,14 +8,14 @@ This readme will describe the prerequisites needed to run the model, the basic f
 ## Prerequisites
 This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodynamics in Binary ALLoys) described in [Parkinson et al., (2020)](https://www.sciencedirect.com/science/article/pii/S2590055219300599). Instructions for downloading SOFTBALL and its supporting software (Chombo) can be found [HERE](https://github.com/jrgparkinson/mushy-layer/tree/master).
 
-The model also uses Matlab.
+The model also uses MATLAB, including its Parallel Computing Toolbox.
 
 ## Downloading SOFTsurf
 ```bash
 $ git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
 ```
 ## Running SOFTsurf
-SOFTsurf can be run by editing the run_SOFTsurf.m Matlab script and then either running that script from a terminal (reccomended) or running in Matlab (less ideal for cluster usage)
+SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from a terminal (reccomended) or running in MATLAB (less ideal for cluster usage)
 
 OR
 
