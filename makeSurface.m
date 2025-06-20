@@ -289,5 +289,11 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     
     %% SAVE THE SURFACE AS A .MAT SO THAT IT CAN BE RELOADED AND UTILIZED
     save(['Surf',saltname,'.mat'],'SOFTsurf','salinity','slope','C_e','beta','g','k_s','saltname');
+
+    %% ADD COPIES OF ALL SAVED FILES TO A NEW DIRECTORY SO IT CAN BE UPLOADED TO GITHUB, BUILDING A LIBRARY OF SALINE ICE CHEMISTRIES FOR DIFFERENT BINARY SALTS
+    system(['mkdir ',saltname]);
+    system(['cp All_values_array.mat ',saltname,'/']);
+    system(['cp Surface.fig ',saltname,'/']);
+    system(['cp Surf',saltname,'.mat ',saltname,'/']);
     
 end
