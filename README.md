@@ -9,4 +9,5 @@ This readme will describe the prerequisites needed to run the model, the basic f
 This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodynamics in Binary ALLoys) described in [Parkinson et al., (2020)](https://www.sciencedirect.com/science/article/pii/S2590055219300599). Instructions for downloading SOFTBALL and its supporting software (Chombo) can be found [HERE](https://github.com/jrgparkinson/mushy-layer/tree/master).
 
 ## Downloading SOFTsurf
-$ git clone https://github.com/
+```bash
+$ git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
