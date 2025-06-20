@@ -15,11 +15,13 @@ The model also uses Matlab.
 $ git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
 ```
 ## Running SOFTsurf
-SOFTsurf can be run by editing the run_SOFTsurf.m Matlab script and then either running that script from a terminal (reccomended) or running in Matlab
+SOFTsurf can be run by editing the run_SOFTsurf.m Matlab script and then either running that script from a terminal (reccomended) or running in Matlab (less ideal for cluster usage)
 
 OR
 
-can be called directly from a terminal as a function.
+Can be called directly from a terminal as a function.
+
+In either case, SOFTsurf is a heavily parallelized code that uses the 'parfor' capabilities of Matlab. The model will distribute instances of SOFTBALL simulations across multiple cores (up to the number of 'salinity' values defined).
 
 ### Editing run_SOFTsurf.m and running in the terminal
 The Matlab script simply defines the following variables needed by the code and then runs the script. Edit the variables for your specific binary salt solution.
@@ -44,5 +46,16 @@ $ matlab -batch "run_SOFTsurf"
 ```bash
 $ matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
+
+## Model outputs and application
+Primary model outputs include:
+- A file named 'All_values_array.mat' containing the raw data in a m x n loadable cell array where each row (m) has n different resolution simulations for each salinity value. m is the number of salinities specified. Currently n=4, and are predefined resolution simulations, more could be added as desired to the makeSurface.m function if more resolution/coverage is desired.
+- A saved figure to check the goodness of fit of the surface to the simulated data.
+- A file named 'Surf(saltname).mat' containing the input parameters and a function object called 'SOFTsurf'.
+
+The 'SOFTsurf' object includes a function handle 'S_ice', which can be used to acquire interpolated ice salinity values from the generated S_oc vs. dT/dz vs. S_ice surface.
+This is done using the syntax: SOFTsurf.S_ice(S_oc, dT_dz), where:
+   S_oc   = ocean salinity value
+   dT_dz  = thermal gradient at the freezing front
 
 
