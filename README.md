@@ -54,8 +54,11 @@ Primary model outputs include:
 - A file named 'Surf(saltname).mat' containing the input parameters and a function object called 'SOFTsurf'.
 
 The 'SOFTsurf' object includes a function handle 'S_ice', which can be used to acquire interpolated ice salinity values from the generated S_oc vs. dT/dz vs. S_ice surface.
+
 This is done using the syntax: SOFTsurf.S_ice(S_oc, dT_dz), where:
+  
    S_oc   = ocean salinity value
+   
    dT_dz  = thermal gradient at the freezing front
 
 
