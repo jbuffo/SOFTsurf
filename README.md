@@ -11,8 +11,9 @@ This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodyna
 The model also uses MATLAB, including its Parallel Computing Toolbox.
 
 ## Downloading SOFTsurf
+In terminal
 ```bash
-$ git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
+git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
 ```
 ## Running SOFTsurf
 SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from a terminal (reccomended) or running in MATLAB (less ideal for cluster usage)
