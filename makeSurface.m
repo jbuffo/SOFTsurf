@@ -189,6 +189,9 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
             avg_Phi = mean(Phi,2);
     
             % find cells above mushy layer
+                % preset depth_interface in case run failed and outputs are
+                % garbage to avoid errors
+            depth_interface=2;
             for k=1:length(avg_dim_S)
                 if avg_Phi(k)<10^-10
                     depth_interface=k;

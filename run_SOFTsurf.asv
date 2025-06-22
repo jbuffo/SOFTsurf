@@ -13,7 +13,7 @@
 %   saltname  - character array (e.g., 'NaCl')
 %   path      - character array (e.g., 'path/to/directory')
 
-salinity = [10,25,50,75,100,125,150,175,200];        % Salinity Values to Simulate Using SOFTBALL (ppt)
+salinity = [10,25,50,75,100,125,150,175,200];       % Salinity Values to Simulate Using SOFTBALL (ppt)
 slope    = -0.0913;                                  % Liquidus Slope for Binary Salt Solution (k/ppt)
 C_e      = 230;                                      % Eutectic Concentration (ppt)
 beta     = 7.6*10^-4;                                % Haline Contraction Coefficient (1/ppt)
