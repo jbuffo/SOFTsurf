@@ -1,5 +1,0 @@
-# Ignore MATLAB autosave files
-*.asv
-
-# Ignore macOS metadata files
-.DS_Store
