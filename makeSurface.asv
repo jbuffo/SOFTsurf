@@ -320,11 +320,10 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     system(['mv Surface.fig ',saltname,'/']);
     system(['mv Surf',saltname,'.mat ',saltname,'/']);
 
-    %% CLEAN UP THE PARENT REPO - FILES WILL BE IN 'saltname' FOLDER
+    %% CLEAN UP THE PARENT REPO
     for i=1:num_salinities
         system(['rm -rf ',num2str(salinity(i)),'ppt/'])
     end
-    system('rm -f diagnostics.csv')
-    system('rm -f diagnosticsLatest.csv')
+    system('rm -rf diagnostics.csv')
     
 end
