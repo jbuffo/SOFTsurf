@@ -10,6 +10,8 @@ This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodyna
 
 The model also uses MATLAB, including its Parallel Computing Toolbox.
 
+NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than 2023a, the function 'resizem' is not longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at mushy-layer/matlab/ChomboMatlab/ChomboLevel.m and the occurrance of 'resizem' is at Line 287.
+
 ## Downloading SOFTsurf
 In terminal
 ```bash
@@ -22,10 +24,10 @@ OR
 
 Can be called directly from a terminal as a function.
 
-In either case, SOFTsurf is a heavily parallelized code that uses the 'parfor' capabilities of Matlab. The model will distribute instances of SOFTBALL simulations across multiple cores (up to the number of 'salinity' values defined).
+In either case, SOFTsurf is a parallelized code that uses the 'parfor' capabilities of MATLAB's Parallel Computing Toolbox. The model will distribute instances of SOFTBALL simulations across multiple cores (up to the number of 'salinity' values defined).
 
 ### Editing run_SOFTsurf.m and running in the terminal
-The Matlab script simply defines the following variables needed by the code and then runs the script. Edit the variables for your specific binary salt solution and simulation environment.
+The MATLAB script defines the following variables needed by the code and then runs the makeSurface function. Edit the variables for your specific binary salt solution and simulation environment and save the file.
 
 | Variable   | Description                             | MATLAB Type        | Example Value                                      |
 |------------|-----------------------------------------|--------------------|----------------------------------------------------|
@@ -58,12 +60,12 @@ The model generates the following primary outputs:
   Each row corresponds to a single salinity value, with columns representing simulations at different resolutions. Additional resolutions can be added by modifying the `makeSurface.m` function.
 
 - **Goodness-of-fit figure**  
-  A saved figure visualizing the fitted surface and its agreement with the simulated data. This helps assess the accuracy of the interpolation.
+  A saved figure visualizing the fitted surface and its agreement with the simulated data. This helps assess the accuracy of the curve fitting and interpolation.
 
 - **`Surf_<saltname>.mat`**  
   A `.mat` file that includes:  
   - All input parameters  
-  - A function object named **`SOFTsurf`**, which includes a function handle **`S_ice`** for interpolation.
+  - A function object named **`SOFTsurf`**, which includes a function handle **`S_ice`** that can be used to rapidly return the ice salinity (S_ice) anywhere in the interpolated ocean salinity (S_oc) and thermal gradient (dT/dz) space.
 
 ---
 
@@ -74,5 +76,7 @@ You can estimate interpolated ice salinity values using:
 ```matlab
 S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
 ```
+
+NOTE: Not valid for S_oc > C_e
 
 
