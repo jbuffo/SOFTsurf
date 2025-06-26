@@ -6,16 +6,21 @@
 
 This is a code to automatically generate lookup functions for ice salinity (S_ice) as a function of ocean salinity (S_oc) and ice-ocean interface thermal gradient (dT/dz) for binary salt solutions (e.g., NaCl, MgSO4, etc.).
 
-The intention of this model is for use as an efficient parameterization of salt entrainment at ice-ocean interfaces, particularly for applications to ice-ocean worlds (e.g., Europa, Enceladus, etc.).
+The intention of this model is for use as an efficient parameterization of salt entrainment at ice-ocean and ice-brine interfaces, particularly for applications to ice-ocean worlds (e.g., Europa, Enceladus, etc.).
 
 This readme will describe the prerequisites needed to run the model, the basic functionality of the model (how to run it), the model's outputs, and how to implement them.
+
+### Disclaimer
+This is a work-in-progress, home-built codebase that I use for research. It’s actively evolving and may contain bugs or incomplete features.
+
+If you run into issues, have questions, or would like to contribute, feel free to [open an issue]() or contact me directly (jacob.j.buffo@dartmouth.edu) — I’ll do my best to help!
 
 ## Prerequisites
 This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodynamics in Binary ALLoys) described in [Parkinson et al., (2020)](https://www.sciencedirect.com/science/article/pii/S2590055219300599). Instructions for downloading SOFTBALL and its supporting software (Chombo) can be found [HERE](https://github.com/jrgparkinson/mushy-layer/tree/master).
 
 The model also uses MATLAB, including its Parallel Computing Toolbox.
 
-NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than 2023a, the function 'resizem' is not longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at:
+NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than **2023a**, the function 'resizem' is not longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at:
 
 **mushy-layer/matlab/ChomboMatlab/ChomboLevel.m**
 
@@ -27,11 +32,11 @@ In terminal
 git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
 ```
 ## Running SOFTsurf
-SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from a terminal (reccomended) or running in MATLAB (less ideal for cluster usage)
+SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from the terminal (reccomended) or running in MATLAB (less ideal for cluster usage)
 
 OR
 
-Can be called directly from a terminal as a function.
+Can be called directly from the terminal as a function.
 
 In either case, SOFTsurf is a parallelized code that uses the 'parfor' capabilities of MATLAB's Parallel Computing Toolbox. The model will distribute instances of SOFTBALL simulations across multiple cores (up to the number of 'salinity' values defined).
 
@@ -54,13 +59,13 @@ Then in terminal:
 $ matlab -batch "run_SOFTsurf"
 ```
 
-### Running directly from the terminal
+### Running the makeSurface function directly from the terminal
 ```bash
 $ matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
 
 ## Model outputs and application
-The model generates the following primary outputs:
+The model generates the following primary outputs and places them in folder named after the 'saltname' input:
 
 - **`All_values_array.mat`**  
   A `.mat` file containing a cell array of raw simulation data. The array is size `m × n`, where:  
@@ -74,7 +79,7 @@ The model generates the following primary outputs:
 - **`Surf_<saltname>.mat`**  
   A `.mat` file that includes:  
   - All input parameters  
-  - A function object named **`SOFTsurf`**, which includes a function handle **`S_ice`** that can be used to rapidly return the ice salinity (S_ice) anywhere in the interpolated ocean salinity (S_oc) and thermal gradient (dT/dz) space.
+  - A function object named **`SOFTsurf`**, which includes a function handle **`S_ice`** that can be used to rapidly return ice salinity (S_ice) values from anywhere in the interpolated ocean salinity (S_oc) and thermal gradient (dT/dz) space.
 
 ---
 
@@ -88,4 +93,7 @@ S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
 
 NOTE: Not valid for S_oc > C_e
 
+<!-- ## Contributing - Push your results to GitHub
+
+I'll be adding new results for different salts as I generate them, but there are **many** to explore. If you've created a new S_ice surface that isn't already included and are willing to contribute it to the catalog, push your 'saltname' folder to the main branch. -->
 
