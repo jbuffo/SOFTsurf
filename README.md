@@ -13,7 +13,7 @@ This readme will describe the prerequisites needed to run the model, the basic f
 ### Disclaimer
 This is a work-in-progress, home-built codebase that I use for research. It’s actively evolving and may contain bugs or incomplete features.
 
-If you run into issues, have questions, or would like to contribute, feel free to [open an issue]() or contact me directly (jacob.j.buffo@dartmouth.edu) — I’ll do my best to help!
+If you run into issues, have questions, or would like to contribute, feel free to [open an issue](https://github.com/jbuffo/SOFTsurf/issues) or contact me directly (jacob.j.buffo@dartmouth.edu) — I’ll do my best to help!
 
 ## Prerequisites
 This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodynamics in Binary ALLoys) described in [Parkinson et al., (2020)](https://www.sciencedirect.com/science/article/pii/S2590055219300599). Instructions for downloading SOFTBALL and its supporting software (Chombo) can be found [HERE](https://github.com/jrgparkinson/mushy-layer/tree/master).
