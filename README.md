@@ -10,7 +10,11 @@ This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodyna
 
 The model also uses MATLAB, including its Parallel Computing Toolbox.
 
-NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than 2023a, the function 'resizem' is not longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at mushy-layer/matlab/ChomboMatlab/ChomboLevel.m and the occurrance of 'resizem' is at Line 287.
+NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than 2023a, the function 'resizem' is not longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at:
+
+**mushy-layer/matlab/ChomboMatlab/ChomboLevel.m**
+
+and the occurrance of 'resizem' is at Line 287.
 
 ## Downloading SOFTsurf
 In terminal
