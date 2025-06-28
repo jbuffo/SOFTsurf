@@ -1,9 +1,9 @@
 # SOFTsurf
 
 <p align="center">
-  <img src="media/SOFTsurf_logo.png" alt="My Plot" height="200"/>
-  <img src="media/welcome.gif" alt="My Plot" height="200"/>
-  <img src="media/SOFTsurf_logo.png" alt="My Plot" height="200"/>
+  <img src="media/SOFTsurf_logo.png" alt="My Plot" height="180"/>
+  <img src="media/welcome.gif" alt="My Plot" height="180"/>
+  <img src="media/SOFTsurf_logo.png" alt="My Plot" height="180"/>
 </p>
 
 This is a code to automatically generate lookup functions for ice salinity (S_ice) as a function of ocean salinity (S_oc) and ice-ocean interface thermal gradient (dT/dz) for binary salt solutions (e.g., NaCl, MgSO4, etc.).
