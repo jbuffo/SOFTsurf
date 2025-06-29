@@ -251,14 +251,14 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
         % turn fit warnings off
         warning('off', 'all');
 
-        % fit curve (100x) and create values along the best fit line (max r^2)
+        % fit curve (250x) and create values along the best fit line (max r^2)
         yfit_hold=[];
         rsq_hold=[];
-        f_hold=cell(1,100);
-        for k=1:100
-            f=fit(sort_hold_mat(:,2),sort_hold_mat(:,3),ft,opts);                        %,'StartPoint',initguess);
-            xfit = linspace(min(sort_hold_mat(:,2)),max(sort_hold_mat(:,2)),20000);
-            yfit = feval(f, xfit);
+        f_hold=cell(1,250);
+        for k=1:250
+            f=fit(sort_hold_mat(:,2),sort_hold_mat(:,3),ft,opts);
+            xfit = [linspace(0,1,10000), linspace(min(sort_hold_mat(:,2)),max(sort_hold_mat(:,2)),100000)];        % add zero value
+            yfit = feval(f, xfit);                                                              % prevent negative salt(?)
             rsq = 1 - sum((sort_hold_mat(:,3) - f(sort_hold_mat(:,2))).^2) / sum((sort_hold_mat(:,3) - mean(sort_hold_mat(:,3))).^2);
             yfit_hold=[yfit_hold yfit];
             rsq_hold=[rsq_hold rsq];
@@ -292,18 +292,24 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     % plot all simulated datapoints
     scatter3(all_vals_real(:,1),all_vals_real(:,2),all_vals_real(:,3),'k')
     % create mesh grid to sample interpolation surface on
-    [xq,yq]=meshgrid([0:5:max(salinity)],[min(all_vals_fit(:,2)):5:max(all_vals_fit(:,2))]);
-    dT_vals=[0:5:max(all_vals_real(:,2))]';
+
+    %[xq,yq]=meshgrid([0:5:max(salinity)],[min(all_vals_fit(:,2)):5:max(all_vals_fit(:,2))]);
+    [xq,yq]=meshgrid([0:2.5:C_e],[0:2.5:max(all_vals_fit(:,2))]);
+
+    dT_vals=[0:2.5:max(all_vals_real(:,2))]';
     % add S_oc=0 => S_ice=0 values
     all_vals_fit=[all_vals_fit;zeros(length(dT_vals),1),dT_vals,zeros(length(dT_vals),1)];
+    % add S_oc=C_e => S_ice=C_e values
+    all_vals_fit=[all_vals_fit;C_e*ones(length(dT_vals),1),dT_vals,C_e*ones(length(dT_vals),1)];
     % interpolate gridded data points and restrict S_ice<S_oc
-    zq=griddata(all_vals_fit(:,1),all_vals_fit(:,2),min(all_vals_fit(:,3),all_vals_fit(:,1)),xq,yq,'cubic');
+    zq=griddata(all_vals_fit(:,1),all_vals_fit(:,2),min(all_vals_fit(:,3),all_vals_fit(:,1)),xq,yq,'linear');
     surf(xq,yq,zq);
-    xlim([0 max(salinity)])
+    xlim([0 C_e])
     ylim([0 200])
     xlabel('Ocean Salinity (ppt)')
     ylabel('Thermal Gradient (K/m)')
     zlabel('Ice Salinity (ppt)')
+    set(gca,'FontSize',20)
     
     % save the figure
     savefig(h,'Surface.fig')
@@ -319,6 +325,7 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     system(['mv All_values_array.mat ',saltname,'/']);
     system(['mv Surface.fig ',saltname,'/']);
     system(['mv Surf',saltname,'.mat ',saltname,'/']);
+    system(['mv ',saltname,' Salts/']);
 
     %% CLEAN UP THE PARENT REPO - FILES WILL BE IN 'saltname' FOLDER
     for i=1:num_salinities
