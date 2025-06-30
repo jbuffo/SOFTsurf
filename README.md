@@ -87,16 +87,24 @@ The model generates the following primary outputs and places them in a folder na
 - **`Surf_<saltname>.mat`**  
   A `.mat` file that includes:  
   - All input parameters  
-  - A function object named **`SOFTsurf`**, which includes a function handle **`S_ice`** that can be used to rapidly return ice salinity (S_ice) values from anywhere in the interpolated ocean salinity (S_oc) and thermal gradient (dT/dz) space.
+  - A function object named **`SOFTsurf`**, which includes the function handles **`S_ice`** and **`S_ice_fast`** that can be used to return ice salinity (S_ice) values from anywhere in the interpolated ocean salinity (S_oc) and thermal gradient (dT/dz) space.
 
 ---
 
-### Using the `S_ice` Function Handle
+### Using the `S_ice` Function Handle (high accuracy using griddata)
 
 You can estimate interpolated ice salinity values using:
 
 ```matlab
 S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
+```
+
+### Using the `S_ice_fast` Function Handle (high speed [100x S_ice] using interpolated surface, current tests show <2% accuracy loss)
+
+You can estimate interpolated ice salinity values using:
+
+```matlab
+S_ice = SOFTsurf.S_ice_fast(S_oc, dT_dz);
 ```
 
 NOTE: Not valid for S_oc > C_e
