@@ -99,7 +99,7 @@ You can estimate interpolated ice salinity values using:
 S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
 ```
 
-### Using the `S_ice_fast` Function Handle (high speed [100x S_ice] using interpolated surface, current tests show <2% accuracy loss)
+### Using the `S_ice_fast` Function Handle (high speed [100x `S_ice`] using interpolated surface, current tests show <2% accuracy loss)
 
 You can estimate interpolated ice salinity values using:
 
