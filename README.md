@@ -115,3 +115,5 @@ NOTE: Not valid for S_oc > C_e
 
 I'll be adding new results for different salts as I generate them, but there are **many** to explore. If you've created a new S_ice surface that isn't already included and are willing to contribute it to the catalog, push your 'saltname' folder to the main branch. -->
 
+<!-- ## Citing the code -->
+
