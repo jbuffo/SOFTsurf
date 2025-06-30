@@ -336,6 +336,12 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     
     %% NOW SAVE THIS INTERPOLATED SURFACE AS A FUNCTION HANDLE THAT CAN BE CALLED AS S_ICE=GETVAL(S_OC,DT/TZ)
     SOFTsurf.S_ice = @(S_oc,dTdz) griddata(all_vals_fit(:,1),all_vals_fit(:,2),min(all_vals_fit(:,3),all_vals_fit(:,1)),S_oc,dTdz);
+
+    % saving a gridded interpolant as an option to speed up search (test % errors more thoroughly - so far < 1.5% for all tested values)
+    [xq2,yq2]=meshgrid([0:2.5:C_e],[0:0.1:max(all_vals_fit(:,2))]);
+    zq2=griddata(all_vals_fit(:,1),all_vals_fit(:,2),min(all_vals_fit(:,3),all_vals_fit(:,1)),xq2,yq2,'linear');
+    interp_grid = griddedInterpolant(xq2',yq2',zq2','linear');
+    SOFTsurf.S_ice_fast = @(S_oc,dTdz) interp_grid(S_oc,dTdz);
     
     %% SAVE THE SURFACE AS A .MAT SO THAT IT CAN BE RELOADED AND UTILIZED
     save(['Surf',saltname,'.mat'],'SOFTsurf','salinity','slope','C_e','beta','g','k_s','saltname');
