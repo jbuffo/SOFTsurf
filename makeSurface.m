@@ -251,13 +251,13 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
         % turn fit warnings off
         warning('off', 'all');
 
-        % fit curve (250x) and create values along the best fit line (max r^2)
+        % fit curve (200x) and create values along the best fit line (max r^2)
         yfit_hold=[];
         rsq_hold=[];
-        f_hold=cell(1,250);
-        for k=1:250
+        f_hold=cell(1,200);
+        for k=1:200
             f=fit(sort_hold_mat(:,2),sort_hold_mat(:,3),ft,opts);
-            xfit = [linspace(0,1,10000), linspace(min(sort_hold_mat(:,2)),max(sort_hold_mat(:,2)),100000)];        % add zero value
+            xfit = sort([linspace(0,1,10000), linspace(min(sort_hold_mat(:,2)),max(sort_hold_mat(:,2)),100000)]);        % add 0-1 values
             yfit = feval(f, xfit);                                                              % prevent negative salt(?)
             rsq = 1 - sum((sort_hold_mat(:,3) - f(sort_hold_mat(:,2))).^2) / sum((sort_hold_mat(:,3) - mean(sort_hold_mat(:,3))).^2);
             yfit_hold=[yfit_hold yfit];
@@ -267,6 +267,26 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
         [maxval, loc]=max(rsq_hold);
         yfit=yfit_hold(:,loc);
         f=f_hold{loc};
+        % force monotonicity with increasing ocean salinity outside of real data
+        % (remedy decreasing/negative fit values for high S_oc & low dT/dz beyond lowest simulated values)
+        for l=1:length(yfit)
+            if i==1
+                continue
+            elseif xfit(l)>=min(sort_hold_mat(:,2))
+                continue
+            else
+                f_test=[];
+                for xx=1:i-1
+                    f_test_fct=fitlines{xx};
+                    f_test=[f_test feval(f_test_fct,xfit(l))];
+                end
+                if yfit(l)<max(f_test)
+                    yfit(l)=min(sort_hold_mat(:,3));
+                else
+                    continue
+                end
+            end
+        end
         % append values and fit lines to cell arrays for plotting and
         % interpolation
         fitlines{i}=f;
