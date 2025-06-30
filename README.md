@@ -81,7 +81,7 @@ The model generates the following primary outputs and places them in a folder na
   A saved figure visualizing the fitted surface and its agreement with the simulated data. This helps assess the accuracy of the curve fitting and interpolation.
 
   <p align="center">
-  <img src="media/Surface_example" alt="My Plot" height="500"/>
+  <img src="media/Surface_example.png" alt="My Plot" height="500"/>
   </p>
 
 - **`Surf_<saltname>.mat`**  
