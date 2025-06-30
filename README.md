@@ -56,7 +56,7 @@ The MATLAB script defines the following variables needed by the code and then ru
 | `saltname` | Name of salt (used in filenames)        | character array    | `'NaCl'`                                           |
 | `path`     | Path to SOFTBALL download               | character array    | `'/path/to/file'`                                  |
 
-**NOTE: 'salinity' values should be entered in ascending value, and it is not recommended to run values that are within 5% of the eutectic concentration for SOFTBALL stability**
+**NOTE: 'salinity' values MUST be entered in ascending value, and it is not recommended to run values that are within 5% of the eutectic concentration for SOFTBALL stability**
 
 Then in terminal:
 ```bash
