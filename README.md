@@ -78,7 +78,7 @@ The model generates the following primary outputs and places them in a folder na
   Each row corresponds to a single salinity value, with columns representing simulations at different resolutions. Additional resolutions can be added by modifying the `makeSurface.m` function.
 
 - **Goodness-of-fit figure**  
-  A saved figure visualizing the fitted surface and its agreement with the simulated data. This helps assess the accuracy of the curve fitting and interpolation.
+  A saved figure visualizing the fitted surface (meshgrid based on red fit lines) and its agreement with the simulated data (black circles). This helps assess the accuracy of the curve fitting and interpolation.
 
   <p align="center">
   <img src="media/Surface_example.png" alt="My Plot" height="500"/>
