@@ -22,7 +22,7 @@ This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodyna
 
 The model also uses MATLAB, including its Parallel Computing Toolbox.
 
-NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than **2023a**, the function 'resizem' is not longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at:
+NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer than **2023a**, the function 'resizem' is no longer supported and needs to be replaced with 'imresize' in the ChomboLevel.m file. This file can be found at:
 
 **mushy-layer/matlab/ChomboMatlab/ChomboLevel.m**
 
@@ -34,7 +34,7 @@ In terminal
 git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
 ```
 ## Running SOFTsurf
-SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from the terminal (reccomended) or running in MATLAB (less ideal for cluster usage)
+SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from the terminal (reccomended) or in MATLAB (less ideal for cluster usage)
 
 OR
 
@@ -56,18 +56,20 @@ The MATLAB script defines the following variables needed by the code and then ru
 | `saltname` | Name of salt (used in filenames)        | character array    | `'NaCl'`                                           |
 | `path`     | Path to SOFTBALL download               | character array    | `'/path/to/file'`                                  |
 
+**NOTE: 'salinity' values should be entered in ascending value, and it is not recommended to run values that are within 5% of the eutectic concentration for SOFTBALL stability**
+
 Then in terminal:
 ```bash
-$ matlab -batch "run_SOFTsurf"
+matlab -batch "run_SOFTsurf"
 ```
 
 ### Running the makeSurface function directly from the terminal
 ```bash
-$ matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
+matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
 
 ## Model outputs and application
-The model generates the following primary outputs and places them in folder named after the 'saltname' input:
+The model generates the following primary outputs and places them in a folder named after the 'saltname' input:
 
 - **`All_values_array.mat`**  
   A `.mat` file containing a cell array of raw simulation data. The array is size `m × n`, where:  
