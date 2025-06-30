@@ -81,8 +81,8 @@ The model generates the following primary outputs and places them in a folder na
   A saved figure visualizing the fitted surface (meshgrid based on red fit lines) and its agreement with the simulated data (black circles). This helps assess the accuracy of the curve fitting and interpolation.
 
   <p align="center">
-  <img src="media/Surface_example.png" alt="My Plot" height="300"/>
-  <img src="media/Surface_example2.png" alt="My Plot" height="300"/>
+  <img src="media/Surface_example.png" alt="My Plot" height="250"/>
+  <img src="media/Surface_example2.png" alt="My Plot" height="250"/>
   </p>
 
 - **`Surf_<saltname>.mat`**  
