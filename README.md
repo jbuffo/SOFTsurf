@@ -80,6 +80,10 @@ The model generates the following primary outputs and places them in a folder na
 - **Goodness-of-fit figure**  
   A saved figure visualizing the fitted surface and its agreement with the simulated data. This helps assess the accuracy of the curve fitting and interpolation.
 
+  <p align="center">
+  <img src="media/Surface_example" alt="My Plot" height="500"/>
+  </p>
+
 - **`Surf_<saltname>.mat`**  
   A `.mat` file that includes:  
   - All input parameters  
