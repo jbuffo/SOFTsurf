@@ -91,7 +91,8 @@ The model generates the following primary outputs and places them in a folder na
 
 ---
 
-### Using the `S_ice` Function Handle (high accuracy using griddata)
+### Using the `S_ice` Function Handle
+(high accuracy using griddata)
 
 You can estimate interpolated ice salinity values using:
 
@@ -99,7 +100,8 @@ You can estimate interpolated ice salinity values using:
 S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
 ```
 
-### Using the `S_ice_fast` Function Handle (high speed [100x `S_ice`] using interpolated surface, current tests show <2% accuracy loss)
+### Using the `S_ice_fast` Function Handle
+(high speed [100x `S_ice`] using interpolated surface, current tests show <2% accuracy loss)
 
 You can estimate interpolated ice salinity values using:
 
