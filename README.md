@@ -8,7 +8,7 @@
 
 This is a code to automatically generate lookup functions for ice salinity (S_ice) as a function of ocean salinity (S_oc) and ice-ocean interface thermal gradient (dT/dz) for binary salt solutions (e.g., NaCl, MgSO4, etc.).
 
-The intention of this model is for use as an efficient parameterization of salt entrainment at ice-ocean and ice-brine interfaces, particularly for applications to ice-ocean worlds (e.g., Europa, Enceladus, etc.).
+The intention of this model is to derive efficient parameterizations of salt entrainment at ice-ocean and ice-brine interfaces, particularly for larger-scale modelling applications to ice-ocean worlds (e.g., Europa, Enceladus, etc.).
 
 This readme will describe the prerequisites needed to run the model, the basic functionality of the model (how to run it), the model's outputs, and how to implement them.
 
