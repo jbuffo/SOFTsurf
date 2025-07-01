@@ -102,7 +102,7 @@ The model generates the following primary outputs and places them in a folder na
 
 ---
 ## Using the lookup functions
-The lookup functions `S_ice` and `S_ice_fast` can be loaded into MATLAB via the `Surf_<saltname>.mat` array. Existing arrays associated with different binary salts can be found in the [Salts]() repository.
+The lookup functions `S_ice` and `S_ice_fast` can be loaded into MATLAB via the `Surf_<saltname>.mat` array. Existing arrays associated with different binary solutions can be found in the [Salts](https://github.com/jbuffo/SOFTsurf/tree/main/Salts) repository.
 
 ### Using the `S_ice` Function Handle
 (high accuracy using griddata)
