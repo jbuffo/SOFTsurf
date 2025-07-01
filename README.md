@@ -12,10 +12,14 @@ The intention of this model is to derive efficient parameterizations of salt ent
 
 This readme will describe the prerequisites needed to run the model, the basic functionality of the model (how to run it), the model's outputs, and how to implement them.
 
+---
+
 ### Disclaimer
 This is a work-in-progress, home-built codebase that I use for research. It’s actively evolving and may contain bugs or incomplete features.
 
 If you run into issues, have questions, or would like to contribute, feel free to [open an issue](https://github.com/jbuffo/SOFTsurf/issues) or contact me directly (jacob.j.buffo@dartmouth.edu) — I’ll do my best to help!
+
+---
 
 ## Prerequisites
 This model uses the existing model SOFTBALL (SOLidification, Flow and Thermodynamics in Binary ALLoys) described in [Parkinson et al., (2020)](https://www.sciencedirect.com/science/article/pii/S2590055219300599). Instructions for downloading SOFTBALL and its supporting software (Chombo) can be found [HERE](https://github.com/jrgparkinson/mushy-layer/tree/master).
@@ -28,11 +32,16 @@ NOTE FOR RUNNING SOFTBALL: If you are using a version of MATLAB that is newer th
 
 and the occurrance of 'resizem' is at Line 287.
 
+---
+
 ## Downloading SOFTsurf
 In terminal
 ```bash
 git clone https://github.com/jbuffo/SOFTsurf.git SOFTsurf
 ```
+
+---
+
 ## Running SOFTsurf
 SOFTsurf can be run by editing the run_SOFTsurf.m MATLAB script and then either running that script from the terminal (reccomended) or in MATLAB (less ideal for cluster usage)
 
@@ -68,7 +77,9 @@ matlab -batch "run_SOFTsurf"
 matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
 
-## Model outputs and application
+---
+
+## Model outputs
 The model generates the following primary outputs and places them in a folder named after the 'saltname' input:
 
 - **`All_values_array.mat`**  
@@ -90,6 +101,8 @@ The model generates the following primary outputs and places them in a folder na
   - A function object named **`SOFTsurf`**, which includes the function handles **`S_ice`** and **`S_ice_fast`** that can be used to return ice salinity (S_ice) values from anywhere in the interpolated ocean salinity (S_oc) and thermal gradient (dT/dz) space.
 
 ---
+## Using the lookup functions
+The lookup functions `S_ice` and `S_ice_fast` can be loaded into MATLAB via the `Surf_<saltname>.mat` array. Existing arrays associated with different binary salts can be found in the [Salts]() repository.
 
 ### Using the `S_ice` Function Handle
 (high accuracy using griddata)
