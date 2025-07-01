@@ -77,6 +77,21 @@ matlab -batch "run_SOFTsurf"
 matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
 
+### Additional values taken as constants in makeSurface.m
+### Physical Constants Used
+
+| Variable | Description                                         | Value            | Units           |
+|----------|-----------------------------------------------------|------------------|------------------|
+| `c_i`    | Specific heat of ice                                | 2000             | J/kg·K           |
+| `c_br`   | Specific heat of ocean (brine)                      | 3985             | J/kg·K           |
+| `rho_i`  | Density of ice                                      | 917              | kg/m³            |
+| `k_i`    | Thermal conductivity of ice                         | 2.0              | W/m·K            |
+| `k_br`   | Thermal conductivity of ocean (brine)               | 0.6              | W/m·K            |
+| `L`      | Latent heat of fusion (ice-water transition)        | 334774           | J/kg             |
+| `eta`    | Dynamic viscosity of water near 0°C                 | 1.88 × 10⁻³      | Pa·s             |
+| `alpha`  | Thermal expansion coefficient for water             | 2.10 × 10⁻⁴      | 1/K              |
+
+
 ---
 
 ## Model outputs
