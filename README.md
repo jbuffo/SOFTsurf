@@ -75,7 +75,7 @@ The model generates the following primary outputs and places them in a folder na
   A `.mat` file containing a cell array of raw simulation data. The array is size `m × n`, where:  
   - `m` is the number of salinity values specified in the input, and  
   - `n` is the number of predefined simulation resolutions (currently `n = 4`).  
-  Each row corresponds to a single salinity value, with columns representing simulations at different resolutions. Additional resolutions can be added by modifying the `makeSurface.m` function.
+  Each row corresponds to a single salinity value, with columns representing simulations at different resolutions. Additional resolutions can be added by modifying the `makeSurface.m` function. Each cell array entry is a 3 column array of [S_oc, dT/dz, S_ice] values for each SOFTBALL simulation.
 
 - **Goodness-of-fit figure**  
   A saved figure visualizing the fitted surface (meshgrid based on red fit lines) and its agreement with the simulated data (black circles). This helps assess the accuracy of the curve fitting and interpolation.
