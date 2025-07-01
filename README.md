@@ -78,7 +78,6 @@ matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
 
 ### Additional values taken as constants in makeSurface.m
-### Physical Constants Used
 
 | Variable | Description                                         | Value            | Units           |
 |----------|-----------------------------------------------------|------------------|------------------|
