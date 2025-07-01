@@ -77,7 +77,7 @@ matlab -batch "run_SOFTsurf"
 matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
 
-### Additional values taken as constants in makeSurface.m
+### Additional variables taken as constant in makeSurface.m
 
 | Variable | Description                                         | Value            | Units           |
 |----------|-----------------------------------------------------|------------------|------------------|
