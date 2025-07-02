@@ -1,0 +1,5 @@
+Ponderings about the code, mostly a TO DO list of things to try/add.
+
+-Limit the use of horizontally averaged SOFTBALL values to the top ~90% of the domain in case there are any odd edge effects at the basal boundary of the domain. I think this should be fine for current run resolution/sizes, but better safe than sorry.
+-Find a way to better fit the SOFTBALL data at high salinities and low dT/dz values. Currently will overestimate S_ice in the region above the highest simulated salinity value for low dT/dz (< 1K/m). Likely not a huge deal unless simulating end game oceans or the last layers of freezing sills/lenses. But would be good to fix this so the modeling space is comprehensive. (Perhaps a different fit there that isn’t handcuffed to the 2021 paper fit??)
+-
