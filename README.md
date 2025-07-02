@@ -136,7 +136,7 @@ You can estimate interpolated ice salinity values in MATLAB using:
 S_ice = SOFTsurf.S_ice_fast(S_oc, dT_dz);
 ```
 
-NOTE: Not valid for S_oc > C_e
+**NOTE: Not valid for S_oc > C_e**
 
 <!-- ## Contributing - Push your results to GitHub
 
