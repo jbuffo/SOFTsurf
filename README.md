@@ -65,7 +65,7 @@ The MATLAB script defines the following variables needed by the code and then ru
 | `saltname` | Name of salt (used in filenames)        | character array    | `'NaCl'`                                           |
 | `path`     | Path to SOFTBALL download               | character array    | `'/path/to/file'`                                  |
 
-**NOTE: 'salinity' values MUST be entered in ascending value, and it is not recommended to run values that are within ~30 ppt of the eutectic concentration as the fitting functions struggle to successfully fit data in the high salinity low dT/dz range. I will try to improve this in future editions, but for now be aware that ice salinity values predicted using the `S_ice` and `S_ice_fast` functions will be overestimates when S_oc is above the highest `salinity` value simulated and dT/dz is low (<1 K/m)**
+**NOTE: 'salinity' values MUST be entered in ascending value, and it is not recommended to run values that are within ~20-30 ppt of the eutectic concentration as the fitting functions struggle to successfully fit data in the high salinity low dT/dz range. I will try to improve this in future editions, but for now be aware that ice salinity values predicted using the `S_ice` and `S_ice_fast` functions will be slightly overestimated when S_oc is above the highest `salinity` value simulated and dT/dz is low (<1 K/m)**
 
 Then in terminal:
 ```bash
