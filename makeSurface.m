@@ -251,11 +251,11 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
         % turn fit warnings off
         warning('off', 'all');
 
-        % fit curve (200x) and create values along the best fit line (max r^2)
+        % fit curve (250x) and create values along the best fit line (max r^2)
         yfit_hold=[];
         rsq_hold=[];
-        f_hold=cell(1,200);
-        for k=1:200
+        f_hold=cell(1,250);
+        for k=1:250
             f=fit(sort_hold_mat(:,2),sort_hold_mat(:,3),ft,opts);
             xfit = sort([linspace(0,1,10000), linspace(min(sort_hold_mat(:,2)),max(sort_hold_mat(:,2)),100000)]);        % add 0-1 values
             yfit = feval(f, xfit);                                                              % prevent negative salt(?)
@@ -326,6 +326,7 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     surf(xq,yq,zq);
     xlim([0 C_e])
     ylim([0 200])
+    zlim([0 C_e+10])
     xlabel('Ocean Salinity (ppt)')
     ylabel('Thermal Gradient (K/m)')
     zlabel('Ice Salinity (ppt)')
