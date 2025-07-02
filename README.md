@@ -65,7 +65,7 @@ The MATLAB script defines the following variables needed by the code and then ru
 | `saltname` | Name of salt (used in filenames)        | character array    | `'NaCl'`                                           |
 | `path`     | Path to SOFTBALL download               | character array    | `'/path/to/file'`                                  |
 
-**NOTE: 'salinity' values MUST be entered in ascending value, and it is not recommended to run values that are within 5% of the eutectic concentration for SOFTBALL stability**
+**NOTE: 'salinity' values MUST be entered in ascending value, and it is not recommended to run values that are within ~30 ppt of the eutectic concentration as the fitting functions struggle to successfully fit data in the high salinity low dT/dz range. I will try to improve this in future editions, but for now be aware that ice salinity values predicted using the `S_ice` and `S_ice_fast` functions will be overestimates when S_oc is above the highest `salinity` value simulated and dT/dz is low (<1 K/m)**
 
 Then in terminal:
 ```bash
@@ -121,7 +121,7 @@ The lookup functions `S_ice` and `S_ice_fast` can be loaded into MATLAB via the 
 ### Using the `S_ice` Function Handle
 (high accuracy using griddata)
 
-You can estimate interpolated ice salinity values using:
+You can estimate interpolated ice salinity values in MATLAB using:
 
 ```matlab
 S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
@@ -130,7 +130,7 @@ S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
 ### Using the `S_ice_fast` Function Handle
 (high speed [100x `S_ice`] using griddedInterpolant surface, current tests show <2% accuracy loss)
 
-You can estimate interpolated ice salinity values using:
+You can estimate interpolated ice salinity values in MATLAB using:
 
 ```matlab
 S_ice = SOFTsurf.S_ice_fast(S_oc, dT_dz);
