@@ -193,7 +193,7 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
                 % garbage to avoid errors
             depth_interface=1;
             for k=1:length(avg_dim_S)
-                if avg_Phi(k)<10^-10
+                if avg_Phi(k)<10^-10 && k<0.85*length(avg_dim_S)
                     depth_interface=k;
                 else
                     break
@@ -281,7 +281,7 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
                     f_test=[f_test feval(f_test_fct,xfit(l))];
                 end
                 if yfit(l)<max(f_test)
-                    yfit(l)=min(sort_hold_mat(:,3));
+                    yfit(l)=max(f_test);
                 else
                     continue
                 end
@@ -360,5 +360,6 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     end
     system('rm -f diagnostics.csv')
     system('rm -f diagnosticsLatest.csv')
+    system('rm -f pout.0')
     
 end
