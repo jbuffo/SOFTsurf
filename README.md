@@ -128,7 +128,7 @@ S_ice = SOFTsurf.S_ice(S_oc, dT_dz);
 ```
 
 ### Using the `S_ice_fast` Function Handle
-(high speed [100x `S_ice`] using griddedInterpolant surface, current tests show <2% accuracy loss)
+(high speed [~100x `S_ice` function] using griddedInterpolant surface, current tests show <2% accuracy loss)
 
 You can estimate interpolated ice salinity values in MATLAB using:
 
