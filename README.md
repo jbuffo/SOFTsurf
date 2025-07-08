@@ -74,12 +74,12 @@ Then in terminal:
 matlab -batch "run_SOFTsurf"
 ```
 
+Note: Run times are ~2-2.5 days for typical CPUs using current model configuration.
+
 ### Running the makeSurface function directly from the terminal
 ```bash
 matlab -batch "makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path);"
 ```
-
-Note: Run times are ~2-2.5 days for typical CPUs using current model configuration.
 
 ### Additional variables taken as constant in makeSurface.m
 
