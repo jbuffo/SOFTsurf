@@ -74,7 +74,7 @@ Then in terminal:
 matlab -batch "run_SOFTsurf"
 ```
 
-Note: Run times are ~2-2.5 days for typical CPUs using current model configuration.
+Note: Run times are ~2-2.5 days using the current model configuration and typical cluster CPUs (assuming maximum parallelization).
 
 ### Running the makeSurface function directly from the terminal
 ```bash
