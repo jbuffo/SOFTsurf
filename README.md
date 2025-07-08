@@ -10,6 +10,8 @@ This is a code to automatically generate lookup functions for ice salinity (S_ic
 
 The intention of this model is to derive efficient parameterizations of salt entrainment at ice-ocean and ice-brine interfaces, particularly for larger-scale modelling applications to ice-ocean worlds (e.g., Europa, Enceladus, etc.).
 
+**If you're simply looking to implement existing lookup functions from the growing [Salts](https://github.com/jbuffo/SOFTsurf/tree/main/Salts) library, feel free to jump ahead to the [Using the lookup functions](#using-the-lookup-functions) section**
+
 This readme will describe the prerequisites needed to run the model, the basic functionality of the model (how to run it), the model's outputs, and how to implement them.
 
 ---
