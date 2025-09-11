@@ -170,5 +170,5 @@ git push origin your-fork      # Where 'your-fork' is the name of your forked re
 Step 4) Create a pull request to merge your updates with the master branch. Go to your forked repository and hit the 'Contribute' button to open a pull request. Fill out the information with a description of your additions.
 
 ## Citing the code
-We are in the process of writing a companion paper for this code, but wanted to make the code available as soon as possible. For the time being, please just use the following zenodo DOI: 
+We are in the process of writing a companion paper for this code, but wanted to make the code available as soon as possible. For the time being, please just use the following zenodo DOI: https://doi.org/10.5281/zenodo.17102641
 
