@@ -142,6 +142,7 @@ S_ice = SOFTsurf.S_ice_fast(S_oc, dT_dz);
 
 **NOTE: Not valid for S_oc > C_e**
 
+---
 ## Contributing - Push your results to GitHub and create a Pull Request to merge with the Main branch
 
 I'll be adding new results for different salts as I generate them, but there are **many** to explore. If you've created a new S_ice surface/lookup function for a salt that isn't already included and are willing to contribute it to the catalog, push your 'saltname' folder to your branched repository and create a pull request to add it to the main branch.
@@ -169,6 +170,7 @@ git push origin your-fork      # Where 'your-fork' is the name of your forked re
 
 Step 4) Create a pull request to merge your updates with the master branch. Go to your forked repository and hit the 'Contribute' button to open a pull request. Fill out the information with a description of your additions.
 
+---
 ## Citing the code
 We are in the process of writing a companion paper for this code, but wanted to make the code available as soon as possible. For the time being, please just use the following zenodo DOI: https://doi.org/10.5281/zenodo.17102641
 
