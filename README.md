@@ -142,22 +142,33 @@ S_ice = SOFTsurf.S_ice_fast(S_oc, dT_dz);
 
 **NOTE: Not valid for S_oc > C_e**
 
-<!-- ## Contributing - Push your results to GitHub and create a Pull Request to merge with the Main branch
+## Contributing - Push your results to GitHub and create a Pull Request to merge with the Main branch
 
 I'll be adding new results for different salts as I generate them, but there are **many** to explore. If you've created a new S_ice surface/lookup function for a salt that isn't already included and are willing to contribute it to the catalog, push your 'saltname' folder to your branched repository and create a pull request to add it to the main branch.
 
-### Make sure your branch is up to date
-In terminal:
+### Steps
+Step 0 - only do once) If you don't already have a fork of the main repository, create your own fork of the main branch ('Fork' button at top right of [main branch page](https://github.com/jbuffo/SOFTsurf)). Add the master branch as an upstream so you can quickly make sure your fork is up to date:
+
 ```bash
-git pull origin main             # Get latest main
-git checkout feature/my-branch
-git merge origin/main        # Merge main into your branch
-# (Resolve conflicts if needed)
+git remote add upstream https://github.com/jbuffo/SOFTsurf.git
+git fetch upstream
 ```
 
-```bash
-git push origin feature/my-branch
-``` -->
+Step 1) Make sure your fork (or local branch) is up to date with the master branch:
 
-<!-- ## Citing the code -->
+```bash
+git pull upstream main
+```
+
+Step 2) Generate or add in your new 'saltname' folder (which contains the variables, lookup functions, and surface) in the 'Salts' folder
+Step 3) Push your updates to you branch:
+
+```bash
+git push origin your-fork      # Where 'your-fork' is the name of your forked repository, default is likely 'main'
+```
+
+Step 4) Create a pull request to merge your updates with the master branch. Go to your forked repository and hit the 'Contribute' button to open a pull request. Fill out the information with a description of your additions.
+
+## Citing the code
+We are in the process of writing a companion paper for this code, but wanted to make the code available as soon as possible. For the time being, please just use the following zenodo DOI: 
 
