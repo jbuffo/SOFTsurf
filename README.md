@@ -142,9 +142,22 @@ S_ice = SOFTsurf.S_ice_fast(S_oc, dT_dz);
 
 **NOTE: Not valid for S_oc > C_e**
 
-<!-- ## Contributing - Push your results to GitHub
+<!-- ## Contributing - Push your results to GitHub and create a Pull Request to merge with the Main branch
 
-I'll be adding new results for different salts as I generate them, but there are **many** to explore. If you've created a new S_ice surface that isn't already included and are willing to contribute it to the catalog, push your 'saltname' folder to the main branch. -->
+I'll be adding new results for different salts as I generate them, but there are **many** to explore. If you've created a new S_ice surface/lookup function for a salt that isn't already included and are willing to contribute it to the catalog, push your 'saltname' folder to your branched repository and create a pull request to add it to the main branch.
+
+### Make sure your branch is up to date
+In terminal:
+```bash
+git pull origin main             # Get latest main
+git checkout feature/my-branch
+git merge origin/main        # Merge main into your branch
+# (Resolve conflicts if needed)
+```
+
+```bash
+git push origin feature/my-branch
+``` -->
 
 <!-- ## Citing the code -->
 
