@@ -170,7 +170,7 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
             system(['mv inputs',num2str(i),' ',num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m']);
     
             %% RUN SOFTBALL SIMULATION
-            system([path,'/mushy-layer/execSubcycle/mushyLayer2d.Linux.64.mpiCC.gfortran.OPT.MPI.ex ./',num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m/inputs',num2str(i)]);
+            system(['LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH ',path,'/mushy-layer/execSubcycle/mushyLayer2d.Linux.64.mpiCC.gfortran.OPT.MPI.ex ./',num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m/inputs',num2str(i)]);
     
             %% ANALYZE LAST HDF5 FILE TO EXTRACT S_ICE VS. S_OC VS. DT/DZ
             % grab stuff using Jamie's code
