@@ -19,7 +19,7 @@ C_e      = 230;                                      % Eutectic Concentration (p
 beta     = 7.6*10^-4;                                % Haline Contraction Coefficient (1/ppt)
 g        = 1.32;                                     % Gravity (m/s^2)
 k_s      = 1.5*10^-9;                                % Salt Diffusivity in H20 (m^2/s)
-saltname = 'NaCl';                                   % Name of Salt (Name of Body w/ Respective Gravity) - for file naming
+saltname = 'NaCl';                                   % Name of Salt (Name of Body w/ Respective Gravity) (e.g., 'MgSO4 (Europa)') - for file naming
 path     = '/thayerfs/home/f0049bv';                 % Location of SOFTBALL's 'mushy-layer' directory
 
 makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path); % Run makeSurface for these inputs
