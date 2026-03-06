@@ -1,4 +1,4 @@
-function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
+function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,bodyname,path)
 
     % DATA TYPES: salinity - array; slope - double; C_e - double; beta -
     % double; g - double; k_s - double; saltname - char
@@ -345,14 +345,14 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,path)
     SOFTsurf.S_ice_fast = @(S_oc,dTdz) interp_grid(S_oc,dTdz);
     
     %% SAVE THE SURFACE AS A .MAT SO THAT IT CAN BE RELOADED AND UTILIZED
-    save(['Surf',saltname,'.mat'],'SOFTsurf','salinity','slope','C_e','beta','g','k_s','saltname');
+    save(['Surf',saltname,'.mat'],'SOFTsurf','salinity','slope','C_e','beta','g','k_s','saltname','bodyname');
 
     %% ADD COPIES OF ALL SAVED FILES TO A NEW DIRECTORY SO IT CAN BE UPLOADED TO GITHUB, BUILDING A LIBRARY OF SALINE ICE CHEMISTRIES FOR DIFFERENT BINARY SALTS
-    system(['mkdir ',saltname]);
-    system(['mv All_values_array.mat ',saltname,'/']);
-    system(['mv Surface.fig ',saltname,'/']);
-    system(['mv Surf',saltname,'.mat ',saltname,'/']);
-    system(['mv ',saltname,' Salts/']);
+    system(['mkdir ',saltname,'_',bodyname]);
+    system(['mv All_values_array.mat ',saltname,'_',bodyname,'/']);
+    system(['mv Surface.fig ',saltname,'_',bodyname,'/']);
+    system(['mv Surf',saltname,'.mat ',saltname,'_',bodyname,'/']);
+    system(['mv ',saltname,'_',bodyname,' Salts/']);
 
     %% CLEAN UP THE PARENT REPO - FILES WILL BE IN 'saltname' FOLDER
     for i=1:num_salinities
