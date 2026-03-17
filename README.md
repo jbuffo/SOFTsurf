@@ -56,16 +56,17 @@ In either case, SOFTsurf is a parallelized code that uses the 'parfor' capabilit
 ### Editing run_SOFTsurf.m and running in the terminal
 The MATLAB script defines the following variables needed by the code and then runs the makeSurface function. Edit the variables for your specific binary salt solution and simulation environment and save the file.
 
-| Variable   | Description                             | MATLAB Type        | Example Value                                      |
-|------------|-----------------------------------------|--------------------|----------------------------------------------------|
-| `salinity` | Salinity values to simulate (ppt)       | array (1×N double) | `[10, 25, 50, 75, 100, 125, 150, 175, 200, 210]`   |
-| `slope`    | Liquidus slope for salt solution (K/ppt)| scalar (double)    | `-0.0913`                                          |
-| `C_e`      | Eutectic concentration (ppt)            | scalar (double)    | `230`                                              |
-| `beta`     | Haline contraction coefficient (1/ppt)  | scalar (double)    | `7.6e-4`                                           |
-| `g`        | Gravity (m/s²)                          | scalar (double)    | `1.32`                                             |
-| `k_s`      | Salt diffusivity in water (m²/s)        | scalar (double)    | `1.5e-9`                                           |
-| `saltname` | Name of salt (used in filenames)        | character array    | `'NaCl'`                                           |
-| `path`     | Path to SOFTBALL download               | character array    | `'/path/to/file'`                                  |
+| Variable   | Description                              | MATLAB Type        | Example Value                                      |
+|------------|------------------------------------------|--------------------|----------------------------------------------------|
+| `salinity` | Salinity values to simulate (ppt)        | array (1×N double) | `[10, 25, 50, 75, 100, 125, 150, 175, 200, 210]`   |
+| `slope`    | Liquidus slope for salt solution (K/ppt) | scalar (double)    | `-0.0913`                                          |
+| `C_e`      | Eutectic concentration (ppt)             | scalar (double)    | `230`                                              |
+| `beta`     | Haline contraction coefficient (1/ppt)   | scalar (double)    | `7.6e-4`                                           |
+| `g`        | Gravity (m/s²)                           | scalar (double)    | `1.32`                                             |
+| `k_s`      | Salt diffusivity in water (m²/s)         | scalar (double)    | `1.5e-9`                                           |
+| `saltname` | Name of salt (used in filenames)         | character array    | `'NaCl'`                                           |
+| `bodyname` | Name of body w.r.t. g (used in filenames)| character array    | `'Europa'`                                         |
+| `path`     | Path to SOFTBALL download                | character array    | `'/path/to/file'`                                  |
 
 **NOTE: 'salinity' values MUST be entered in ascending value, and it is not recommended to run values that are within ~20-30 ppt of the eutectic concentration as the fitting functions struggle to successfully fit data in the high salinity low dT/dz range. I will try to improve this in future editions, but for now be aware that ice salinity values predicted using the `S_ice` and `S_ice_fast` functions will be slightly overestimated when S_oc is above the highest `salinity` value simulated and dT/dz is low (<1 K/m)**
 
