@@ -213,7 +213,10 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,bodyname,
             cell_array_hold{i,j}=[S_ocean,dT_dz_save,S_ice_save];
     
             % delete folder for that salinity-domain size pair as we're done with it and can save space
-            system(['rm -rf ',num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m']);
+            if exist([num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m'],'dir')
+                rmdir([num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m'],'s')
+            end
+            % system(['rm -rf ',num2str(salinity(i)),'ppt/',num2str(simulation_size(j)),'m']);
         
         end
     
@@ -356,10 +359,25 @@ function SOFTsurf = makeSurface(salinity,slope,C_e,beta,g,k_s,saltname,bodyname,
 
     %% CLEAN UP THE PARENT REPO - FILES WILL BE IN 'saltname' FOLDER
     for i=1:num_salinities
-        system(['rm -rf ',num2str(salinity(i)),'ppt/'])
+        if exist([num2str(salinity(i)),'ppt/'],'dir')
+            rmdir([num2str(salinity(i)),'ppt/'],'s')
+        end
     end
-    system('rm -f diagnostics.csv')
-    system('rm -f diagnosticsLatest.csv')
-    system('rm -f pout.0')
+    if exist('diagnostics.csv','file')
+        delete('diagnostics.csv')
+    end
+    if exist('diagnosticsLatest.csv','file')
+        delete('diagnosticsLatest.csv')
+    end
+    if exist('pout.0','file')
+        delete('pout.0')
+    end
+
+    % for i=1:num_salinities
+    %     system(['rm -rf ',num2str(salinity(i)),'ppt/'])
+    % end
+    % system('rm -f diagnostics.csv')
+    % system('rm -f diagnosticsLatest.csv')
+    % system('rm -f pout.0')
     
 end
